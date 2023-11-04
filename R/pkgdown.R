@@ -66,7 +66,10 @@ pkgdown_version <- function() {
 #' @rdname use_pkgdown
 #' @export
 use_pkgdown_github_pages <- function() {
-  tr <- target_repo(github_get = TRUE, ok_configs = c("ours", "fork"))
+  tr <- target_repo(
+    github_get = TRUE,
+    ok_configs = c("ours", "fork", "fork_upstream_is_not_origin_parent")
+  )
   check_can_push(tr = tr, "to turn on GitHub Pages")
 
   use_pkgdown()

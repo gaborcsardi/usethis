@@ -52,7 +52,10 @@ use_github_pages <- function(branch = "gh-pages", path = "/", cname = NA) {
   check_name(branch)
   check_name(path)
   check_string(cname, allow_empty = FALSE, allow_na = TRUE, allow_null = TRUE)
-  tr <- target_repo(github_get = TRUE, ok_configs = c("ours", "fork"))
+  tr <- target_repo(
+    github_get = TRUE,
+    ok_configs = c("ours", "fork", "fork_upstream_is_not_origin_parent")
+  )
   check_can_push(tr = tr, "to turn on GitHub Pages")
 
   gh <- gh_tr(tr)
