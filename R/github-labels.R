@@ -78,7 +78,10 @@ use_github_labels <- function(labels = character(),
                               colours = character(),
                               descriptions = character(),
                               delete_default = FALSE) {
-  tr <- target_repo(github_get = TRUE, ok_configs = c("ours", "fork"))
+  tr <- target_repo(
+    github_get = TRUE,
+    ok_configs = c("ours", "fork", "fork_upstream_is_not_origin_parent")
+  )
   check_can_push(tr = tr, "to modify labels")
 
   gh <- gh_tr(tr)
