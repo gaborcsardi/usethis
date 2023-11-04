@@ -477,7 +477,8 @@ target_repo <- function(cfg = NULL,
                         github_get = NA,
                         role = c("source", "primary"),
                         ask = is_interactive(),
-                        ok_configs = c("ours", "fork", "theirs")) {
+                        ok_configs = c("ours", "fork", "theirs",
+                          "fork_upstream_is_not_origin_parent")) {
   cfg <- cfg %||% github_remote_config(github_get = github_get)
   stopifnot(inherits(cfg, "github_remote_config"))
   role <- match.arg(role)
@@ -639,7 +640,6 @@ stop_maybe_github_remote_config <- function(cfg) {
 check_for_bad_config <- function(cfg,
                                  bad_configs = c(
                                    "no_github",
-                                   "fork_upstream_is_not_origin_parent",
                                    "fork_cannot_push_origin",
                                    "upstream_but_origin_is_not_fork"
                                  )) {
