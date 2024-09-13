@@ -229,7 +229,7 @@ release_type <- function(version) {
 use_github_release <- function(publish = TRUE) {
   check_is_package("use_github_release()")
 
-  tr <- target_repo(github_get = TRUE, ok_configs = c("ours", "fork"))
+  tr <- target_repo(github_get = TRUE, ok_configs = c("ours", "fork", "fork_upstream_is_not_origin_parent"))
   check_can_push(tr = tr, "to create a release")
 
   dat <- get_release_data(tr)
